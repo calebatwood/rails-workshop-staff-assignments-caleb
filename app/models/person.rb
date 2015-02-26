@@ -1,7 +1,7 @@
 class Person < ActiveRecord::Base
 
-  has_many :assignments
-  has_many :locations, through: :assignments
+  has_many :assignments, dependent: :destroy
+  has_many :locations, through: :assignments, dependent: :destroy
 
   validates :title, presence: {message: "or First name can\'t both be blank"}, unless: :first_name?
   validates :first_name, presence: {message: "or title can\'t both be blank"}, unless: :title?
