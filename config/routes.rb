@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post "signin" => "sessions#create"
   get "signout" => "sessions#destroy", as: :signout
 
-  resources :locations, only: :index
+  resources :locations
   resources :people do
     resources :assignments
   end
