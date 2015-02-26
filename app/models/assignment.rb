@@ -1,6 +1,6 @@
 class Assignment < ActiveRecord::Base
 
-  belongs_to :people
-  belongs_to :locations
+  belongs_to :person
+  belongs_to :location
 
 end

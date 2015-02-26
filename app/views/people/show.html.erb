@@ -3,3 +3,26 @@
 </div>
 
 <div class="pull-right"><%= link_to "+Location", new_person_assignment_path(@person) %></div>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Role</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @person.assignments.each do |ass| %>
+    <tr>
+      <td><%= ass.location.name %></td>
+      <td> <%= ass.role %></td>
+      <td class="text-right">
+        <%= link_to "Edit", edit_person_assignment_path(@person, ass), class: "btn btn-info" %>
+        <%= link_to "Delete", person_assignment_path(@person, ass), method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>

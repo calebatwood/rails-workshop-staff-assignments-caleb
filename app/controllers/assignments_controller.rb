@@ -7,12 +7,19 @@ class AssignmentsController < ApplicationController
 
   def create
     @person = Person.find(params[:person_id])
-    @assignment = Assignment.new(assignment_params)
+    @assignment = @person.assignments.new(assignment_params)
     if @assignment.save
-      redirect_to root_url
+      redirect_to person_path(@person)
     else
       render :new
     end
+  end
+
+  def destroy
+    @person = Person.find(params[:person_id])
+    @assignment = Assignment.find(params[:id])
+    @assignment.destroy
+    redirect_to person_path(@person)
   end
 
   private
